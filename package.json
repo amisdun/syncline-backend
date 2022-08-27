@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "NODE_ENV=development env-cmd --file .env nodemon --experimental-vm-modules ./bin/www.js",
+    "start": "NODE_ENV=development node --experimental-vm-modules ./bin/www.js",
+    "dev": "NODE_ENV=development env-cmd --file .env nodemon --experimental-vm-modules ./bin/www.js",
     "test": "env-cmd --file .env node --experimental-vm-modules node_modules/jest/bin/jest.js"
   },
   "type": "module",
