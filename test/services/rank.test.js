@@ -38,10 +38,12 @@ describe("MovieRank Services", () => {
       user: user._id,
     };
     const movie = await addMovie(details);
-    const rankDetails = [
-      { user: user._id, rank: 1, movie: movie._id },
-      { user: user._id, rank: 2, movie: movie._id },
-    ];
+    const rankDetails = {
+      data: [
+        { rank: 1, movie: movie._id },
+        { rank: 2, movie: movie._id },
+      ],
+    };
     const rank = await createMoviesRanks(rankDetails, user._id);
     expect(rank.length).toBe(2);
   });
