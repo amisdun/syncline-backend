@@ -19,17 +19,4 @@
     MONGODB_URI=
     PORT=
     JWT_SECRET=
-    TMDB_API_KEY=
-    TMDB_API_URL=
-```
-#### API Documentation
-
- `Find Link to API Documentation here: https://documenter.getpostman.com/view/20202546/VUr1HYgc`
-#### My Application Details
-
-```
-  Name: Godspower Michael
-  Email: michealdunamis@gmail.com
-  Position: Backend Developer(NodeJs)
-
-```
+``
