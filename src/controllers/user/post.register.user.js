@@ -9,7 +9,6 @@ export const registerUserController = async (req, res) => {
       user: {
         firstName: user.firstName,
         lastName: user.lastName,
-        isLoggedIn: user.isLoggedIn,
       },
     };
     return successResponse(res, data, "OK", 201);
