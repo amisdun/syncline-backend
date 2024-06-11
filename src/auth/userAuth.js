@@ -11,9 +11,6 @@ export const authenticate = (req, res, next) => {
     const token = authorization?.split(" ")[1];
     verify(token, process.env.JWT_SECRET, async (err, decode) => {
       if (err) throw new Error(err.message);
-      const user = await User.findById(decode?._id);
-      if (!user?.token && !user?.isLoggedIn)
-        return errorResponse(res, "Invalid token, Please LogIn Again", 401);
       req.user = decode;
       return next();
     });

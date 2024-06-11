@@ -15,15 +15,13 @@ import { getPostController } from "./src/controllers/posts/get.post.js";
 import { getPostsController } from "./src/controllers/posts/get.posts.js";
 import { deletePostController } from "./src/controllers/posts/del.posts.js";
 import { updatePostController } from "./src/controllers/posts/put.post.js";
-import { createLikeController } from "./src/controllers/likes/post..like.js";
+import { createLikeController } from "./src/controllers/likes/post.like.js";
 import { validation } from "node-restify-validation";
 import { authenticate } from "./src/auth/userAuth.js";
 dotenv.config()
 const app = restify.createServer();
 
 const { json, urlencoded } = bodyParser;
-
-console.log("process.env.MONGODB_URI", process.env.MONGODB_URI)
 
 mongdbConnection.db_connection();
 
@@ -40,12 +38,12 @@ app.post({
     url: "/v1/post"
     }, authenticate ,createPostsController)
 app.get({ url: "/v1/post/:id", }, getPostController)
-app.get({ url: "/v1/posts/" }, authenticate, getPostsController)
+app.get({ url: "/v1/posts" }, authenticate, getPostsController)
 app.del({ url: "/v1/post/:id" }, authenticate, deletePostController)
 app.put({ url: "/v1/post/:id" }, authenticate, updatePostController)
 
 //like routes
-app.post({ url: "/v1/like/:postId" }, authenticate, createLikeController)
+app.get({ url: "/v1/like/:postId" }, authenticate, createLikeController)
 app.del({url: "/v1/like/:id", }, authenticate, deletePostController)
 
 

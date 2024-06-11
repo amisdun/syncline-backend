@@ -1,14 +1,15 @@
-import { Like } from "../../models/likesModel.js";
 import { Post } from "../../models/postModel.js";
 
 export const likeAPost = async (postId, user) => {
-  const like = await Like.create({ likedBy: user })
   const post = await Post.findById(postId)
+  if (post.likes.includes(user)) {
+    throw new Error("Post already liked by user")
+  }
 
   if (!post) throw new Error("Post Not found")
-  post.likes.push(like)
+  post.likes.push(user)
   await post.save()
 
-  return like
+  return { like: like.toJSON(), post:  post.toJSON()  }
   
 };

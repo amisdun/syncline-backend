@@ -6,10 +6,7 @@ export const registerUserController = async (req, res) => {
     const { token, user } = await registerUser(req.body);
     const data = {
       token,
-      user: {
-        firstName: user.firstName,
-        lastName: user.lastName,
-      },
+      user
     };
     return successResponse(res, data, "OK", 201);
   } catch (error) {

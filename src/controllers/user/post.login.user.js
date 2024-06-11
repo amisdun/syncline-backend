@@ -6,8 +6,8 @@ import { logInUser } from "../../services/user/loginUser.js";
 
 export const logInUserController = async (req, res) => {
   try {
-    const token = await logInUser(req.body);
-    return successResponse(res, { data: token }, "LogIn successful");
+    const data = await logInUser(req.body);
+    return successResponse(res, { data: data }, "LogIn successful");
   } catch (error) {
     return errorResponse(res, error.message);
   }
