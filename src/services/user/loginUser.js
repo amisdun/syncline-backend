@@ -13,14 +13,5 @@ export const logInUser = async (loginDetails) => {
   const user = await userExist(email);
   await compareHash(user?.password, password);
   const token = signToken(user.toJSON());
-  const loggedInUser = await User.findByIdAndUpdate(
-    user?._id,
-    {
-      isLoggedIn: true,
-      token,
-      lastLogin: new Date().toISOString(),
-    },
-    { new: true }
-  ).select("token _id");
-  return loggedInUser;
+  return { token, user };
 };

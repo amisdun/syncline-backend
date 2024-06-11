@@ -20,17 +20,6 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    isLoggedIn: {
-      type: Boolean,
-      required: true,
-      default: false,
-    },
-    lastLogin: {
-      type: Date,
-    },
-    token: {
-      type: String,
-    },
   },
   { timestamps: true }
 );

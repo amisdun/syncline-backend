@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
-const { connect } = mongoose;
+const { connect } = mongoose;import dotenv from "dotenv"
+dotenv.config()
 
 class MongDBConnection {
   constructor(MONGO_URI) {

@@ -3,7 +3,7 @@ import { User } from "../models/userModel.js";
 import { errorResponse } from "../serverResponse/response.js";
 const { verify } = jsonwebtoken;
 
-export const authenticate = async (req, res, next) => {
+export const authenticate = (req, res, next) => {
   try {
     const { authorization } = req.headers;
     if (!authorization)

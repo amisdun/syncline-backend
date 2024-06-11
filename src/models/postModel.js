@@ -2,9 +2,9 @@ import mongoose from "mongoose";
 
 const { Schema, model } = mongoose;
 
-const listSchema = new Schema(
+const PostSchema = new Schema(
   {
-    name: {
+    title: {
       required: true,
       type: String,
     },
@@ -13,15 +13,24 @@ const listSchema = new Schema(
       ref: "User",
       type: Schema.Types.ObjectId,
     },
-    movies: [
+    content: 
+      {
+        required: true,
+        type: String,
+    },
+    image: {
+      required: true,
+      type: String
+    },
+    likes: [
       {
         required: false,
-        ref: "Movie",
+        ref: "Like",
         type: Schema.Types.ObjectId,
-      },
-    ],
+      }
+    ]
   },
   { timestamps: true }
 );
 
-export const List = model("List", listSchema);
+export const Post = model("Post", PostSchema);

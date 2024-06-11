@@ -2,11 +2,13 @@ import {
   errorResponse,
   successResponse,
 } from "../../serverResponse/response.js";
-import { deleteList } from "../../services/list/deleteList.js";
+import { deletePost } from "../../services/posts/deletePost.js";
 
-export const deleteListController = async (req, res) => {
+
+export const deletePostController = async (req, res) => {
   try {
-    await deleteList(req.params.id);
+    const id = req.params.id
+    await deletePost(id)
     return successResponse(res, {}, "success");
   } catch (error) {
     return errorResponse(res, error.message);

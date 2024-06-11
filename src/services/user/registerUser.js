@@ -16,14 +16,6 @@ export const registerUser = async (userData) => {
   userData.password = hashedPassword;
   const user = await User.create(userData);
   const token = signToken(user.toJSON());
-  const newUser = await User.findByIdAndUpdate(
-    user?._id,
-    {
-      isLoggedIn: true,
-      token,
-      lastLogin: new Date().toISOString(),
-    },
-    { new: true }
-  );
+  
   return { token, user: newUser };
 };
